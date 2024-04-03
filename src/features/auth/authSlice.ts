@@ -11,6 +11,7 @@ type AuthState = {
 
 const initialState: AuthState = { user: null, access_token: null, partnerId: null };
 
+
 const slice = createSlice({
     name: 'auth',
     initialState,
@@ -18,7 +19,7 @@ const slice = createSlice({
         addToken: (state, { payload }) => ({
             ...state,
             access_token: payload,
-            partnerId: parseInt(jose.decodeJwt(payload).partner_id as string),
+            partnerId: parseInt(jose.decodeJwt(payload).id as string),
         }),
     },
     extraReducers: (builder) => {
